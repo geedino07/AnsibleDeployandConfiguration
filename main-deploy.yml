@@ -1,5 +1,5 @@
  # Exercise for setting up a web server in an EC
- - name: Exercise for setting up a web server in an EC 
+ - name: Exercise for deploying projects 
    # hosts: ubuntu
    # Use the public IP if the VM is already created
    hosts: all
