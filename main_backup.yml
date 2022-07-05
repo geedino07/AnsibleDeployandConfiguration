@@ -1,0 +1,64 @@
+---
+- name: "update apt packages."
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: "upgrade packages"
+  become: yes
+  apt:
+    upgrade: yes
+
+- name: "download node js zip file"
+  get_url:
+    url: https://nodejs.org/dist/latest-gallium/node-v16.15.1-linux-x64.tar.xz
+    dest: /home/ubuntu/node-v16.15.1-linux-x64.tar.xz
+
+- name: "install dependencies"
+  become: yes
+  apt:
+    name: ["nodejs", "npm"]
+    state: latest
+    update_cache: yes
+
+- name: "install pm2"
+  become: yes
+  npm:
+    name: pm2
+    global: yes
+    production: yes
+    state: present
+
+- name: "Extract tar node js"
+  unarchive:
+    src: /home/ubuntu/node-v16.15.1-linux-x64.tar.xz
+    dest: /home/ubuntu/
+
+- name: "Change directory to node js"
+  become: yes
+  shell: |
+    cd /home/ubuntu/node-v16.15.1-linux-x64
+    ./configure
+    make install
+
+- name: "install other dependencies"
+  become: yes
+  apt:
+    name: "[build-essential]"
+    state: latest
+    update_cache: yes
+
+- name: "make web directory"
+  shell: |
+    mkdir ~/web
+
+- name: "install index page"
+  copy:
+    src: index.html
+    dest: ~/web
+    backup: yet
+
+- name: "start web server"
+  become : yes
+  shell: |
+    pm2 start ~/web/index.js -f
