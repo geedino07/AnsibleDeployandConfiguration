@@ -33,7 +33,7 @@ jobs:
       - run:
           name: Run Playbook and Configure server
           command: |
-            ansible-playbook -i inventory main-deploy
+            ansible-playbook -i inventory main-deploy.yml
 
 workflows:
   myWorkflow:
