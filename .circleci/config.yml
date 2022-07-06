@@ -48,7 +48,7 @@ jobs:
 
   smoke_test:
     docker:
-      - image: amazon/aws-cli
+      - image: python:3.7-alpine3.11
     steps:
       - run: apk add --update curl
       - run:
@@ -68,7 +68,7 @@ jobs:
 workflows:
   myWorkflow:
     jobs:
-    #  - create_infrastructure
+      - create_infrastructure
     # - configure_infrastructure
       - smoke_test
     #      requires:
