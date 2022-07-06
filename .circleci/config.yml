@@ -50,18 +50,29 @@ jobs:
     docker:
       - image: amazon/aws-cli
     steps:
-      - checkout
-      - run: return 1
+      - run: apk add --update curl
+      - run:
+          name: smoke test
+          command: |
+            URL="https://blog.udadcity2222.com/"
+            # Test if website exists
+            if curl -s --head ${URL} 
+            then
+              return 0
+            else
+              return 1
+            fi
+     # - run: return 1
       - destroy_environment 
 
 workflows:
   myWorkflow:
     jobs:
-      - create_infrastructure
+    #  - create_infrastructure
     # - configure_infrastructure
-      - smoke_test:
-          requires:
-            - create_infrastructure
+      - smoke_test
+    #      requires:
+    #        - create_infrastructure
 
 
 
