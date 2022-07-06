@@ -20,6 +20,8 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
+      - add_ssh_keys:
+        fingerprints: ["e1:08:a0:c5:07:2a:65:ff:23:64:f0:7c:19:9f:ad:69"] 
       - run:
           name: Create Cloudformation Stack
           command: |
