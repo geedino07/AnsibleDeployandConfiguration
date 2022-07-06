@@ -51,7 +51,7 @@ jobs:
       - run:
           name: smoke test
           command: |
-            URL="https://blog.udacggity.com/"
+            URL="https://blog.udacity.com/"
             # Test if website exists
             if curl -s --head ${URL} 
             then
@@ -63,6 +63,6 @@ jobs:
 workflows:
   myWorkflow:
     jobs:
-    #  - create_infrastructure
+      - create_infrastructure
     # - configure_infrastructure
       - smoke_test
