@@ -7,9 +7,7 @@ orbs:
 # Define the jobs we want to run for this project
 
 commands:
-   destroy_environment:
-    docker:
-      -  image: amazon/aws-cli
+  destroy_environment:
     steps:
       - run:
           name: Destroy environment
