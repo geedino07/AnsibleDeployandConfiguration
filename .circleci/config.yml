@@ -63,7 +63,7 @@ jobs:
               return 1
             fi
      # - run: return 1
-     # - destroy_environment 
+      - destroy_environment 
 
 workflows:
   myWorkflow:
