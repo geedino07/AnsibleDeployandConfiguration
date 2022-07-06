@@ -48,7 +48,7 @@ jobs:
 
   smoke_test:
     docker:
-      - image: amazon/aws-cli
+      - image: alphine:latest
     steps:
       - run: apk add --update curl
       - run:
@@ -63,7 +63,7 @@ jobs:
               return 1
             fi
      # - run: return 1
-      - destroy_environment 
+     # - destroy_environment 
 
 workflows:
   myWorkflow:
