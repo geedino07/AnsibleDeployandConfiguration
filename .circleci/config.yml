@@ -27,7 +27,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file template.yml \
-              --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:6} \
+              --stack-name myStack-${CIRCLE_WORKFLOW_ID} \
               --region us-east-1
   
   configure_infrastructure: 
@@ -62,7 +62,7 @@ jobs:
             else
               return 1
             fi
-      - run: return 1
+     # - run: return 1
       - destroy_environment 
 
 workflows:
