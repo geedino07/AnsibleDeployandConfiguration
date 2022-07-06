@@ -63,13 +63,13 @@ jobs:
               return 1
             fi
      # - run: return 1
-      - destroy_environment 
+     # - destroy_environment 
 
 workflows:
   myWorkflow:
     jobs:
-      - create_infrastructure
+    #  - create_infrastructure
     # - configure_infrastructure
       - smoke_test:
-          requires:
-            - create_infrastructure
+    #      requires:
+    #        - create_infrastructure
