@@ -55,9 +55,16 @@ jobs:
       - run:
           name: smoke test
           command: |
-          return 1
+            URL="https://blog.udaci565ty.com/"
+            # Test if website exists
+            if curl -s --head ${URL} 
+            then
+              return 0
+            else
+              return 1
+            fi
       - destroy_environment
-        when: on_fail
+         when: on_fail
 
 workflows:
   myWorkflow:
