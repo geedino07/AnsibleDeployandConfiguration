@@ -27,7 +27,7 @@ jobs:
           command: |
             aws cloudformation deploy \
               --template-file template.yml \
-              --stack-name myStack-${CIRCLE_WORKFLOW_ID} \
+              --stack-name back-end-${CIRCLE_WORKFLOW_ID} \
               --region us-east-1
   
   configure_infrastructure: 
@@ -55,7 +55,7 @@ jobs:
       - run:
           name: smoke test
           command: |
-            URL="https://blog.udadcity2222.com/"
+            URL="https://blog.udadcity.com/"
             # Test if website exists
             if curl -s --head ${URL} 
             then
